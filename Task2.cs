@@ -12,6 +12,14 @@ public class Task2 : MonoBehaviour
 
     HashSet<string> nameList;
 
+    void DefineSet()
+    {
+        foreach(string name in Names)
+        {
+            
+        }
+    }
+
     void CreateNameArray()
     {
         for(int i = 0; i < 15; i++)
