@@ -42,4 +42,9 @@ public class Task2 : MonoBehaviour
             }
         }
     }
+
+    void PrintOutResults()
+    {
+        
+    }
 }
