@@ -12,13 +12,15 @@ public class Task2 : MonoBehaviour
 
     HashSet<string> nameList;
 
-    void DefineSet()
+    HashSet<string> duplicateNames;
+
+    void Awake()
     {
-        foreach(string name in Names)
-        {
-            
-        }
+        CreateNameArray();
+        CheckDuplicateNames();
+        PrintOutResults();
     }
+
 
     void CreateNameArray()
     {
@@ -31,6 +33,13 @@ public class Task2 : MonoBehaviour
 
     void CheckDuplicateNames()
     {
-
+        foreach(string name in randomNames)
+        {
+            if(!nameList.Add(name))
+            {
+                //If you cannot add the name to the hashset, that means the name is already in the set, so it is a duplicate
+                duplicateNames.Add(name);
+            }
+        }
     }
 }
