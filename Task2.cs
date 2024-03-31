@@ -10,9 +10,9 @@ public class Task2 : MonoBehaviour
 
     string[] randomNames = new string[15];
 
-    HashSet<string> nameList;
+    HashSet<string> nameList = new HashSet<string>();
 
-    HashSet<string> duplicateNames;
+    HashSet<string> duplicateNames = new HashSet<string>();
 
     void Awake()
     {
@@ -33,18 +33,46 @@ public class Task2 : MonoBehaviour
 
     void CheckDuplicateNames()
     {
-        foreach(string name in randomNames)
+        for(int i = 0; i < randomNames.Length; i++)
         {
-            if(!nameList.Add(name))
+            if (!nameList.Add(randomNames[i]))
             {
                 //If you cannot add the name to the hashset, that means the name is already in the set, so it is a duplicate
-                duplicateNames.Add(name);
+                duplicateNames.Add(randomNames[i]);
             }
         }
     }
 
     void PrintOutResults()
     {
-        
+        string arrayOutput = "Created the name array: ";
+
+        for(int i = 0; i < randomNames.Length; i++)
+        {
+            CheckForPeriod(i, randomNames.Length, ref arrayOutput, randomNames[i]);
+        }
+
+        string hashOutput = "The array has duplicate names: ";
+        string[] duplicateNamesArray = duplicateNames.ToArray();
+
+        for (int i = 0; i < duplicateNamesArray.Length; i++)
+        {
+            CheckForPeriod(i, duplicateNamesArray.Length, ref hashOutput, duplicateNamesArray[i]);
+        }
+
+        Debug.Log(arrayOutput);
+        Debug.Log(hashOutput);
+    }
+
+    void CheckForPeriod(int loopInt, int loopMaxInt, ref string output, string name)
+    {
+        if (loopInt == loopMaxInt - 1)
+        {
+            output += name + ". ";
+        }
+        else
+        {
+            output += name + ", ";
+        }
     }
 }
